@@ -9,6 +9,6 @@ final appRouter = GoRouter(routes: [
   GoRoute(
     name: HomeScreen.name,
     path: '/home',
-    builder: (context, state) => HomeScreen(userName: state.extra as String),
+    builder: (context, state) => const HomeScreen(textoingresadousuario: state.extra as String),
   ),
 ]);
