@@ -5,7 +5,7 @@ class HomeScreen extends StatelessWidget {
 static const String name = 'home';
 
 String userName;
- HomeScreen({super.key , this.userName = ""});
+ HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,8 @@ String userName;
         child: Column (mainAxisAlignment: MainAxisAlignment.center,
             
             children: [
-              const Text('Bienvenido', style:  TextStyle( fontSize: 30),),
-               Text(userName, style: const TextStyle(color: Color.fromRGBO(255, 0, 0, 0), fontSize: 40),),
-        
+              const Text('Bienvenido', style:  TextStyle(fontSize: 40),),
+               Text($textoingresadouser, style: const TextStyle(color: Color.fromRGBO(255, 0, 0, 0), fontSize: 40),),
           ],),
       ),
     );
