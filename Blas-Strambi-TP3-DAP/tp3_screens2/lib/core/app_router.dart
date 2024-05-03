@@ -1,3 +1,5 @@
+import 'package:clase18_4/presentation/Screens/home_screen.dart';
+import 'package:clase18_4/presentation/Screens/login_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
@@ -5,12 +7,12 @@ final appRouter = GoRouter(
   routes: [
   GoRoute(
     name: LoginScreen.name,
-    path: '/login',
-    builder: (context, state) => const LoginScreen(),
+    path: '/',
+    builder: (context, state) => LoginScreen(),
   ),
   GoRoute(
     name: HomeScreen.name,
     path: '/home',
-    builder: (context, state) => HomeScreen(userName: state.extra as String),
+    builder: (context, state) => HomeScreen(),
   ),
 ]);

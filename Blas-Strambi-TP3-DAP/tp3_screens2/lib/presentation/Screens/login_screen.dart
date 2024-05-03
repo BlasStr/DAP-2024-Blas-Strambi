@@ -1,8 +1,10 @@
+import 'package:clase18_4/presentation/Screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
 class LoginScreen extends StatelessWidget {
+   static const String name = 'login';
    LoginScreen({super.key});
   
   TextEditingController userController = TextEditingController() ;
@@ -37,14 +39,14 @@ class LoginScreen extends StatelessWidget {
 
              ElevatedButton(
               onPressed: (){
-                String inputUser = userController.text;
-                String inputPass = passwordController.text;
+                String textoingresadouser = userController.text;
+                String textoingresadopass = passwordController.text;
 
-                if(inputPass.isEmpty || inputUser.isEmpty){
+                if(textoingresadouser.isEmpty || textoingresadopass.isEmpty){
                   print("Por favor, ingrese Usuario y/o Contraseña");
-                } else if ((inputUser == "Android") && (inputPass == "1234") ){
+                } else if ((textoingresadouser == "Android") && (textoingresadopass == "1234") ){
                   print("Log In exitoso");
-                  context.pushNamed(HomeScreen.name , extra: inputUser);
+                  context.pushNamed(HomeScreen.name);
                 } else {
                   print("Log In fallido");
                 }
