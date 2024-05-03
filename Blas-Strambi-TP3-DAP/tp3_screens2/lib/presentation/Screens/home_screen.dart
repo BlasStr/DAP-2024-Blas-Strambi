@@ -16,9 +16,8 @@ String nombredeUsuario;
         ),
       body: const Center(
         child: Column (mainAxisAlignment: MainAxisAlignment.center,
-            
             children: [
-               Text('Bienvenido', style: TextStyle(color: Color.fromRGBO(255, 0, 0, 0), fontSize: 40),),
+               Text('Bienvenido', style: TextStyle(color: Color.fromRGBO(255, 0, 0, 1), fontSize: 40),),
                //Text(textoingresadouser, style: const TextStyle(color: Color.fromRGBO(255, 0, 0, 0), fontSize: 40),),
           ],),
       ),
