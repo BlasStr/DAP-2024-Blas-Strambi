@@ -12,7 +12,6 @@ class MainApp extends StatelessWidget {
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(); 
-    );
+      home: LoginScreen()); 
   }
 }
