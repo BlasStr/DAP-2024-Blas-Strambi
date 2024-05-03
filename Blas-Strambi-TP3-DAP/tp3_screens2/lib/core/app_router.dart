@@ -1,6 +1,7 @@
-import 'package:clase18_4/presentation/Screens/home_screen.dart';
-import 'package:clase18_4/presentation/Screens/login_screen.dart';
+
 import 'package:go_router/go_router.dart';
+import '../presentation/Screens/home_screen.dart';
+import '../presentation/Screens/login_screen.dart';
 
 final appRouter = GoRouter(
   
