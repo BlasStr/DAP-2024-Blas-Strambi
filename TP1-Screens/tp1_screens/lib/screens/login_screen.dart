@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:tp1_screens/screens/home_screen.dart';
 
 List<String> users = ['Blas', 'Rocco', 'Luca'];
-List<String> password = ['123', '456', '789'];
+List<String> passwords = ['123', '456', '789'];
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                   ScaffoldMessenger.of(context).showSnackBar(logInVacio);
                 } else {
                   int user = users.indexOf(textoingresadouser);
-                  if (password[user] != textoingresadopass){
+                  if (passwords[user] != textoingresadopass){
                     const logInFallido = SnackBar(
                     duration: Duration(seconds: 5),
                     content: Text('Contraseña incorrecta.'),
