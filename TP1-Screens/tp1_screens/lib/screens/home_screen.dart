@@ -11,7 +11,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home')),
-      body: 
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Welcome, User',
+                style: TextStyle(
+                    color: Color.fromRGBO(152, 31, 188, 1), fontSize: 40)),
+          ],
         ),
+      ),
+    );
   }
 }

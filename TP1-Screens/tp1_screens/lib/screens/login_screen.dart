@@ -5,6 +5,10 @@ import 'package:tp1_screens/screens/home_screen.dart';
 List<String> users = ['Blas', 'Rocco', 'Luca'];
 List<String> passwords = ['123', '456', '789'];
 
+int user1 = users.indexOf('Blas');
+int user2 = users.indexOf('Rocco');
+int user3 = users.indexOf('Luca');
+
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   static const String name = 'login';
@@ -47,26 +51,26 @@ class LoginScreen extends StatelessWidget {
                     duration: Duration(seconds: 5),
                     content: Text('Usuario no existe.'),
                   );
-                  ScaffoldMessenger.of(context).showSnackBar(logInVacio);
+                  ScaffoldMessenger.of(context).showSnackBar(userNoExiste);
                 } else {
                   int user = users.indexOf(textoingresadouser);
-                  if (passwords[user] != textoingresadopass){
+                  if (passwords[user] != textoingresadopass) {
                     const logInFallido = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Contraseña incorrecta.'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInFallido);
-                } else {
-                  context.pushNamed(HomeScreen.name,
-                      extra: userController.text);
-                      const logInExitoso = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Contraseña incorrecta.'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
-                }
+                      duration: Duration(seconds: 5),
+                      content: Text('Contraseña incorrecta.'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(logInFallido);
+                  } else {
+                    context.pushNamed(HomeScreen.name,
+                        extra: userController.text);
+                    const logInExitoso = SnackBar(
+                      duration: Duration(seconds: 5),
+                      content: Text('Contraseña incorrecta.'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
                   }
-                  if (textoingresadouser.isEmpty || textoingresadopass.isEmpty) {
+                }
+                if (textoingresadouser.isEmpty || textoingresadopass.isEmpty) {
                   //¿Se ha ingresado Usuario y Contraseña?
                   const logInVacio = SnackBar(
                     duration: Duration(seconds: 5),
@@ -74,12 +78,9 @@ class LoginScreen extends StatelessWidget {
                   );
                   ScaffoldMessenger.of(context).showSnackBar(logInVacio);
                 }
-                }
-            ),
-            
-              
+              },
               child: const Text('Login'),
-            
+            ),
           ],
         ),
       ),
