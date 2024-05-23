@@ -5,10 +5,6 @@ import 'package:tp1_screens/screens/home_screen.dart';
 List<String> users = ['Blas', 'Rocco', 'Luca'];
 List<String> password = ['123', '456', '789'];
 
-int user1 = users.indexOf('Blas');
-int user2 = users.indexOf('Rocco');
-int user3 = users.indexOf('Luca');
-
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   static const String name = 'login';
@@ -46,68 +42,44 @@ class LoginScreen extends StatelessWidget {
                 String textoingresadouser = userController.text;
                 String textoingresadopass = passwordController.text;
 
-                if (textoingresadouser.isEmpty && textoingresadopass.isEmpty) {
+                if (!users.contains(textoingresadouser)) {
+                  const userNoExiste = SnackBar(
+                    duration: Duration(seconds: 5),
+                    content: Text('Usuario no existe.'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(logInVacio);
+                } else {
+                  int user = users.indexOf(textoingresadouser);
+                  if (password[user] != textoingresadopass){
+                    const logInFallido = SnackBar(
+                    duration: Duration(seconds: 5),
+                    content: Text('Contraseña incorrecta.'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(logInFallido);
+                } else {
+                  context.pushNamed(HomeScreen.name,
+                      extra: userController.text);
+                      const logInExitoso = SnackBar(
+                    duration: Duration(seconds: 5),
+                    content: Text('Contraseña incorrecta.'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
+                }
+                  }
+                  if (textoingresadouser.isEmpty || textoingresadopass.isEmpty) {
                   //¿Se ha ingresado Usuario y Contraseña?
                   const logInVacio = SnackBar(
                     duration: Duration(seconds: 5),
-                    content: Text('Por favor, ingrese Usuario y Contraseña.'),
+                    content: Text('Campos Vacíos'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(logInVacio);
-                } else if (textoingresadouser.isEmpty) {
-                  //¿Se ha ingresado Usuario?
-                  const logInVacio = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Por favor, ingrese Usuario.'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInVacio);
-                } else if (textoingresadopass.isEmpty) {
-                  //¿Se ha ingresado Contraseña?
-                  const logInVacio = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Por favor, ingrese Contraseña.'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInVacio);
-                } else if ((textoingresadouser == users[user1]) &&
-                    (textoingresadopass == password[user1])) {
-                  //Matching Usuario-Contraseña para User 1
-                  context.pushNamed(HomeScreen.name,
-                      extra: userController.text);
-                  const logInExitoso = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Log In Exitoso'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
-                } else if ((textoingresadouser == users[user2]) &&
-                    (textoingresadopass == password[user2])) {
-                  //Matching Usuario-Contraseña para User 2
-                  context.pushNamed(HomeScreen.name,
-                      extra: userController.text);
-                  const logInExitoso = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Log In Exitoso'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
-                } else if ((textoingresadouser == users[user3]) &&
-                    (textoingresadopass == password[user3])) {
-                  //Matching Usuario-Contraseña para User 3
-                  context.pushNamed(HomeScreen.name,
-                      extra: userController.text);
-                  const logInExitoso = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Log In Exitoso'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
-                } else {
-                  //Login Fallido en cualquier otro caso
-                  const logInFallido = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Log In Fallido'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInFallido);
                 }
-              },
-              child: const Text('Login'),
+                }
             ),
+            
+              
+              child: const Text('Login'),
+            
           ],
         ),
       ),
