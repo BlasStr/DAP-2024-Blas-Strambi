@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tp1_screens/screens/home_screen.dart';
+import 'package:tp_listview/screens/home_screen.dart';
 
 List<String> users = ['Blas', 'Rocco', 'Luca'];
 List<String> passwords = ['123', '456', '789'];
@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                         extra: userController.text);
                     const logInExitoso = SnackBar(
                       duration: Duration(seconds: 5),
-                      content: Text('Bienvenido.'),
+                      content: Text('Contraseña incorrecta.'),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
                   }
@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                   //¿Se ha ingresado Usuario y Contraseña?
                   const logInVacio = SnackBar(
                     duration: Duration(seconds: 5),
-                    content: Text('Campos Vacíos.'),
+                    content: Text('Campos Vacíos'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(logInVacio);
                 }

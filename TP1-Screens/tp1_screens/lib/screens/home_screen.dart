@@ -4,22 +4,15 @@ import 'package:flutter/material.dart';
 class HomeScreen extends StatelessWidget {
   static const String name = 'home';
 
-  String nombredeUsuario;
-  HomeScreen({super.key, this.nombredeUsuario = ''});
+  String nombreUser;
+  HomeScreen({super.key, this.nombreUser = ''});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home')),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Welcome, User',
-                style: TextStyle(
-                    color: Color.fromRGBO(152, 31, 188, 1), fontSize: 40)),
-          ],
-        ),
+      body: Center(
+        child: Text('Welcome, $nombreUser'),
       ),
     );
   }
