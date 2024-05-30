@@ -45,14 +45,14 @@ class LoginScreen extends StatelessWidget {
                 if (textoingresadouser.isEmpty || textoingresadopass.isEmpty) {
                   const logVacio = SnackBar(
                     duration: Duration(seconds: 3),
-                    content: Text('Campos Vacíos.'),
+                    content: Text('Campos Vacíos'),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(logVacio);
                 } else {
                   if (!users.contains(textoingresadouser) || !passwords.contains(textoingresadopass)) {
                     const logInFallido = SnackBar(
                       duration: Duration(seconds: 3),
-                      content: Text('Usuario y/o Contraseña incorrectos.'),
+                      content: Text('Usuario y/o Contraseña incorrectos'),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(logInFallido);
                   } else {
@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                       context.pushNamed(HomeScreen.name);
                       const logInExitoso = SnackBar(
                         duration: Duration(seconds: 3),
-                        content: Text('Bienvenido.'),
+                        content: Text('Bienvenido'),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
                     }
