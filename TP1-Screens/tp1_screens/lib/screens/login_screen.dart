@@ -70,14 +70,6 @@ class LoginScreen extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
                   }
                 }
-                if (textoingresadouser.isEmpty || textoingresadopass.isEmpty) {
-                  //¿Se ha ingresado Usuario y Contraseña?
-                  const logInVacio = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Campos Vacíos.'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(logInVacio);
-                }
               },
               child: const Text('Login'),
             ),
