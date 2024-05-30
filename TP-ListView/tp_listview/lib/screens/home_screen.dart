@@ -5,26 +5,30 @@ class HomeScreen extends StatelessWidget {
   static const String name = 'home';
   HomeScreen({super.key});
 
-  List<String> deportes = [
-    'Fútbol',
-    'Rugby',
-    'Handball',
-    'Gym',
-    'Básquet',
-    'Natación',
-    'Gimnasia Artística',
-    'Tennis',
-    'Golf',
-    'Boxeo',
-    'Badminton',
-    'Rocket League',
-    'Béisbol',
-    'Softball',
-    'Waterpolo',
-    'Cricket',
+  List<String> phoneGames = [
     'Brawl Stars',
-    'Nado Sincronizado',
-    'Voley',
+    'New Star Soccer',
+    'Subway Surfers',
+    'Minion Rush',
+    'Candy Crush',
+    'Clash Royale',
+    'Clash of Clans',
+    'Truco Blyts',
+    'Zombie Tsunami',
+    'Crossy Road'
+  ];
+
+  List<String> developers = [
+    'Supercell',
+    'Five Aces Publishing Ltd',
+    'SYBO Games',
+    'Gameloft',
+    'King',
+    'Supercell',
+    'Supercell',
+    'Blyts',
+    'Mobigame SAS',
+    'HIPSTER WHALE'
   ];
 
   @override
@@ -32,12 +36,12 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(title: const Text('Home')),
         body: ListView.builder(
-          itemCount: deportes.length,
+          itemCount: phoneGames.length,
           itemBuilder: (context, index) {
             return Card(
               child: ListTile(
-                title: Text(deportes[index]),
-                subtitle: Text('Deporte Nº $index'),
+                title: Text(phoneGames[index]),
+                subtitle: Text(developers[index]),
               ),
             );
           },
