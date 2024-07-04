@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:tp_listview/screens/home_screen.dart';
+import 'home_screen.dart';
 
 List<String> users = ['Blas', 'Rocco', 'Luca'];
 List<String> passwords = ['123', '456', '789'];
