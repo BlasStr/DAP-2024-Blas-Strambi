@@ -44,9 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
         body: ListView.builder(
           itemCount: phoneGames.length,
           itemBuilder: (context, index) {
+            final element = phoneGames[index];
             return Card(
               child: ListTile(
-                title: Text(phoneGames[index] as String),
+                title: Text(element.title),
                 subtitle: Text('Deporte Nº $index'),
               ),
             );
