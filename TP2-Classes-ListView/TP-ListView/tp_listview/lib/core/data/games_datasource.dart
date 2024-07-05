@@ -7,7 +7,7 @@ final phoneGamesList = [
     description: 'Description goes here',
     developer: 'Supercell',
     year: 2017,
-    poster: 'https://i.scdn.co/image/ab6761610000e5ebf7b952107c126c561c52171e',
+    urlimage: 'https://i.scdn.co/image/ab6761610000e5ebf7b952107c126c561c52171e',
   ),
   PhoneGames(
     id: '2',
@@ -15,7 +15,7 @@ final phoneGamesList = [
     description: 'Description goes here',
     developer: 'Supercell',
     year: 2016,
-    poster:
+    urlimage:
         'https://www.gamersoft.net/wp-content/uploads/2023/06/clash-royale.webp',
   ),
   PhoneGames(
@@ -24,7 +24,7 @@ final phoneGamesList = [
     description: 'Description goes here',
     developer: 'SYBO Games',
     year: 2012,
-    poster:
+    urlimage:
         'https://play-lh.googleusercontent.com/alCSQLIJVL4VB9OtGATP7f503VojDSgl_V78Zzz8AvGxfs1xaEmIFoVWrKtjigjPMecH',
   ),
   PhoneGames(
@@ -33,7 +33,7 @@ final phoneGamesList = [
     description: 'Description goes here',
     developer: 'King',
     year: 2012,
-    poster:
+    urlimage:
         'https://play-lh.googleusercontent.com/6ducfNys46MGge6Bl3kaHaGbNnnQh46j6-3JkOqk0PKgUNVhm-dlNenJwz65nYZ4B0g8',
   ),
 ];
