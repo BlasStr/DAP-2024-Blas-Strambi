@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tp_listview/core/data/login_datasource.dart';
 import 'package:tp_listview/screens/home_screen.dart';
 
-List<String> users = ['Blas', 'Rocco', 'Luca'];
-List<String> passwords = ['123', '456', '789'];
+class LogIn {
+  String user;
+  String password;
 
-int user1 = users.indexOf('Blas');
-int user2 = users.indexOf('Rocco');
-int user3 = users.indexOf('Luca');
+  LogIn({
+    required this.user,
+    required this.password,
+  });
+
+  List<LogIn> logInList = [
+    LogIn(user: 'Blas', password: '123'),
+    LogIn(user: 'Rocco', password: '456'),
+    LogIn(user: 'Luca', password: '789'),
+  ];
+}
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   static const String name = 'login';
   LoginScreen({super.key});
+  LogIn? login;
 
   final TextEditingController userController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -46,25 +57,28 @@ class LoginScreen extends StatelessWidget {
                 String textoingresadouser = userController.text;
                 String textoingresadopass = passwordController.text;
 
-                if (!users.contains(textoingresadouser)) {
-                  const userNoExiste = SnackBar(
-                    duration: Duration(seconds: 5),
-                    content: Text('Usuario no existe.'),
+                if (textoingresadouser.isEmpty || textoingresadopass.isEmpty) {
+                  const logVacio = SnackBar(
+                    duration: Duration(seconds: 3),
+                    content: Text('Campos Vacíos'),
                   );
-                  ScaffoldMessenger.of(context).showSnackBar(userNoExiste);
+                  ScaffoldMessenger.of(context).showSnackBar(logVacio);
+                } else if (login!.user.contains(textoingresadouser) ||
+                    login!.password.contains(textoingresadopass)) {
+                  const logIncorrecto = SnackBar(
+                    duration: Duration(seconds: 3),
+                    content: Text('Usuario y/o Contraseña incorrectos'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(logIncorrecto);
                 } else {
-                  int user = users.indexOf(textoingresadouser);
-                  if (passwords[user] != textoingresadopass) {
-                    const logInFallido = SnackBar(
-                      duration: Duration(seconds: 5),
-                      content: Text('Contraseña incorrecta.'),
-                    );
-                    ScaffoldMessenger.of(context).showSnackBar(logInFallido);
-                  } else {
-                    context.pushNamed(HomeScreen.name);
+                  int userNum = logInList.indexOf(textoingresadouser as LogIn);
+                  if (login!.user[userNum] == textoingresadouser &&
+                      login!.password[userNum] == textoingresadopass) {
+                    context.pushNamed(HomeScreen.name,
+                        extra: textoingresadouser);
                     const logInExitoso = SnackBar(
-                      duration: Duration(seconds: 5),
-                      content: Text('Bienvenido.'),
+                      duration: Duration(seconds: 3),
+                      content: Text('Bienvenido'),
                     );
                     ScaffoldMessenger.of(context).showSnackBar(logInExitoso);
                   }
