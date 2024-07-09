@@ -15,12 +15,8 @@ final appRouter = GoRouter(routes: [
     builder: (context, state) => const HomeScreen(),
   ),
   GoRoute(
-      name: DetailScreen.name,
-      path: '/detail',
-      builder: (context, state) {
-        final gameId = state.pathParameters['gameId'];
-        return DetailScreen(
-          gameId: gameId!,
-        );
-      }),
+    name: DetailScreen.name,
+    path: '/detail',
+    builder: (context, state) => const DetailScreen(),
+  ),
 ]);

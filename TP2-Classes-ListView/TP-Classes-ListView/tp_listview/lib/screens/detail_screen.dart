@@ -4,15 +4,15 @@ import 'package:tp_listview/core/data/games_datasource.dart';
 class DetailScreen extends StatelessWidget {
   const DetailScreen({
     super.key,
-    required this.gameId,
   });
 
   static const String name = 'detail_screen';
-  final String gameId;
 
   @override
   Widget build(BuildContext context) {
-    final game = phoneGamesList.firstWhere((game) => game.id == gameId);
+    final gameId = phoneGamesList.firstWhere(
+      (gameId) => gameId.id == gameId,
+    );
 
     return Scaffold(
         appBar: AppBar(
@@ -22,22 +22,22 @@ class DetailScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.network(game.urlimage, height: 400),
+              Image.network(gameId.urlimage, height: 400),
               const SizedBox(height: 16),
               Text(
-                game.title,
+                gameId.title,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               Text(
-                'Developer: ${game.developer}',
+                'Developer: ${gameId.developer}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                'Year: ${game.year}',
+                'Year: ${gameId.year}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                game.description,
+                gameId.description,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],

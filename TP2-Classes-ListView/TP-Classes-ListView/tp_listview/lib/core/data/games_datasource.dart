@@ -1,4 +1,20 @@
-import 'package:tp_listview/screens/home_screen.dart';
+class PhoneGames {
+  String id;
+  String title;
+  String developer;
+  String description;
+  String urlimage;
+  int year;
+
+  PhoneGames({
+    required this.id,
+    required this.title,
+    required this.developer,
+    required this.description,
+    required this.urlimage,
+    required this.year,
+  });
+}
 
 final phoneGamesList = [
   PhoneGames(
