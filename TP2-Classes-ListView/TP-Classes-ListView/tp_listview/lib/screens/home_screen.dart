@@ -14,11 +14,11 @@ class HomeScreen extends StatelessWidget {
         body: ListView.builder(
           itemCount: phoneGamesList.length,
           itemBuilder: (context, index) {
-            final gameElement = phoneGamesList[index];
+            PhoneGames gameElement = phoneGamesList[index];
             return Padding(
-              padding: const EdgeInsets.all(.0),
-              child: Card(
-                child: ListTile(
+                padding: const EdgeInsets.all(.0),
+                child: Card(
+                  child: ListTile(
                     // ignore: unnecessary_null_comparison
                     leading: gameElement.urlimage != null
                         ? _getPoster(gameElement.urlimage)
@@ -26,9 +26,10 @@ class HomeScreen extends StatelessWidget {
                     title: Text(gameElement.title),
                     subtitle: Text('Developer: ${gameElement.developer}'),
                     trailing: const Icon(Icons.arrow_circle_right_sharp),
-                    onTap: () => context.pushNamed(DetailScreen.name)),
-              ),
-            );
+                    onTap: () => context.pushNamed(DetailScreen.name,
+                        extra: gameElement),
+                  ),
+                ));
           },
         ));
   }

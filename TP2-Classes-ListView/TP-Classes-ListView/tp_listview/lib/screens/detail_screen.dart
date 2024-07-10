@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:tp_listview/core/data/games_datasource.dart';
 
+// ignore: must_be_immutable
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({
-    super.key,
-  });
-
   static const String name = 'detail_screen';
-  final gameDetail? = gameElement;
+
+  DetailScreen({super.key, this.gameDetail});
+
+  PhoneGames? gameDetail;
 
   @override
   Widget build(BuildContext context) {
-        return Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text('Game Details'),
         ),
@@ -19,22 +19,22 @@ class DetailScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.network(gameDetail.urlimage, height: 400),
+              Image.network(gameDetail!.urlimage, height: 400),
               const SizedBox(height: 16),
               Text(
-                '${gameDetail?.title}',
+                gameDetail!.title,
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               Text(
-                'Developer: ${gameDetail?.developer}',
+                gameDetail!.developer,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                'Year: ${gameDetail?.year}',
+                gameDetail!.year.toString(),
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                '${gameDetail?.description}',
+                gameDetail!.description,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
