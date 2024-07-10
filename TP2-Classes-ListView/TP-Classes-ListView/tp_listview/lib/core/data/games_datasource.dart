@@ -20,7 +20,8 @@ final phoneGamesList = [
   PhoneGames(
     id: '01',
     title: 'Brawl Stars',
-    description: 'Description goes here',
+    description:
+        'Brawl Stars (abreviado BS) es un videojuego multijugador para móviles disponible en Android y iOS, desarrollado por Supercell y lanzado globalmente en 2018.1​ La versión beta del juego fue lanzada el 14 de junio de 2017 solo para Canadá, Australia y Nueva Zelanda con temáticas simples y mecánicas difíciles, mientras que la versión global se lanzó agregando un apartado visual con mayor detalles interesantes y diferentes funcionalidades, que se agregaron el 12 de diciembre de 2018. Actualmente lleva 5 años de existencia en el mundo de los videojuegos móviles.',
     developer: 'Supercell',
     year: 2017,
     urlimage:
