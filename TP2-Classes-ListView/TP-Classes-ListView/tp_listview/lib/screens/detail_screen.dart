@@ -7,14 +7,11 @@ class DetailScreen extends StatelessWidget {
   });
 
   static const String name = 'detail_screen';
+  final gameDetail? = gameElement;
 
   @override
   Widget build(BuildContext context) {
-    final gameId = phoneGamesList.firstWhere(
-      (gameId) => gameId.id == gameId,
-    );
-
-    return Scaffold(
+        return Scaffold(
         appBar: AppBar(
           title: const Text('Game Details'),
         ),
@@ -22,22 +19,22 @@ class DetailScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.network(gameId.urlimage, height: 400),
+              Image.network(gameDetail.urlimage, height: 400),
               const SizedBox(height: 16),
               Text(
-                gameId.title,
+                '${gameDetail?.title}',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               Text(
-                'Developer: ${gameId.developer}',
+                'Developer: ${gameDetail?.developer}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                'Year: ${gameId.year}',
+                'Year: ${gameDetail?.year}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               Text(
-                gameId.description,
+                '${gameDetail?.description}',
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
