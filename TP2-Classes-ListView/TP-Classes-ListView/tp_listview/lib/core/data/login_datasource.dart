@@ -1,5 +1,3 @@
-import 'package:tp_listview/screens/login_screen.dart';
-
 class LogIn {
   String user;
   String password;

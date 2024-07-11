@@ -26,18 +26,18 @@ class HomeScreen extends StatelessWidget {
                 Color.fromRGBO(200, 200, 200, 0.5),
               ])),
           child: ListView.builder(
-            itemCount: phoneGamesList.length,
+            itemCount: gamesList.length,
             itemBuilder: (context, index) {
-              PhoneGames gameElement = phoneGamesList[index];
+              Games gameElement = gamesList[index];
               return Padding(
-                  padding: const EdgeInsets.all(.0),
+                  padding: const EdgeInsets.only(),
                   child: Card(
                     color: const Color.fromRGBO(240, 235, 240, 1),
                     child: ListTile(
                       // ignore: unnecessary_null_comparison
                       leading: gameElement.urlimage != null
                           ? _getPoster(gameElement.urlimage)
-                          : const Icon(Icons.movie),
+                          : const Icon(Icons.gamepad),
                       title: Text(gameElement.title),
                       subtitle: Text('Developer: ${gameElement.developer}'),
                       trailing: const Icon(Icons.arrow_circle_right_sharp),

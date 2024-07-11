@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
               Container(
                 alignment: Alignment.bottomLeft,
                 child: const Text(
-                  'Mail',
+                  'User',
                   style: TextStyle(
                     color: Color.fromARGB(255, 60, 60, 60),
                     fontFamily: 'OpenSans',
@@ -58,8 +58,8 @@ class LoginScreen extends StatelessWidget {
               TextField(
                 controller: userController,
                 decoration: const InputDecoration(
-                  hintText: 'Ingresá tu Mail',
-                  icon: Icon(Icons.mail),
+                  hintText: 'Ingresá tu Usuario',
+                  icon: Icon(Icons.person),
                 ),
                 obscureText: false,
               ),

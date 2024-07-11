@@ -1,4 +1,4 @@
-class PhoneGames {
+class Games {
   String id;
   String title;
   String developer;
@@ -6,7 +6,7 @@ class PhoneGames {
   String urlimage;
   int year;
 
-  PhoneGames({
+  Games({
     required this.id,
     required this.title,
     required this.developer,
@@ -16,42 +16,97 @@ class PhoneGames {
   });
 }
 
-final phoneGamesList = [
-  PhoneGames(
+final gamesList = [
+  Games(
     id: '01',
-    title: 'Brawl Stars',
+    title: 'Counter Strike 2',
     description:
-        'Brawl Stars (abreviado BS) es un videojuego multijugador para móviles disponible en Android y iOS, desarrollado por Supercell y lanzado globalmente en 2018.1​ La versión beta del juego fue lanzada el 14 de junio de 2017 solo para Canadá, Australia y Nueva Zelanda con temáticas simples y mecánicas difíciles, mientras que la versión global se lanzó agregando un apartado visual con mayor detalles interesantes y diferentes funcionalidades, que se agregaron el 12 de diciembre de 2018. Actualmente lleva 5 años de existencia en el mundo de los videojuegos móviles.',
-    developer: 'Supercell',
-    year: 2017,
+        "Counter-Strike 2 is a 2023 free-to-play tactical first-person shooter game developed and published by Valve. It is the fifth entry in the Counter-Strike series, developed as an updated version of the previous entry, Counter-Strike: Global Offensive (2012). The game was announced on March 22, 2023, and was released on September 27, 2023, for Windows and Linux, replacing Global Offensive on Steam. Like its predecessor, the game pits two teams, the Counter-Terrorists and the Terrorists, against each other in various objective-based game modes; additional game modes that stray away from this setup are also included. Counter-Strike 2 features major technical improvements over Global Offensive, including a move from the Source game engine to Source 2, improved graphics, and a new 'sub-tick' server architecture. In addition, many maps from Global Offensive were updated to take advantage of the features of Source 2, with some maps receiving complete overhauls.",
+    developer: 'Valve',
+    year: 2023,
     urlimage:
-        'https://i.scdn.co/image/ab6761610000e5ebf7b952107c126c561c52171e',
+        'https://cdn.akamai.steamstatic.com/steam/apps/730/header.jpg?t=1698860631',
   ),
-  PhoneGames(
+  Games(
     id: '02',
-    title: 'Clash Royale',
-    description: 'Description goes here',
-    developer: 'Supercell',
+    title: 'DARK SOULS III',
+    description:
+        'Dark Souls III is a 2016 action role-playing game developed by FromSoftware and published by Bandai Namco Entertainment for PlayStation 4, Xbox One, and Windows. The third and final entry in the Dark Souls series, the game follows an unkindled character on a quest to prevent the end of the world. It is played in a third-person perspective, and players have access to various weapons, armour, magic, and consumables that they can use to fight their enemies. Hidetaka Miyazaki, the creator of the series, returned to direct the game after handing the development duties of Dark Souls II to others.',
+    developer: 'FROM SOFTWARE',
     year: 2016,
     urlimage:
-        'https://www.gamersoft.net/wp-content/uploads/2023/06/clash-royale.webp',
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/header.jpg?t=1700587390',
   ),
-  PhoneGames(
+  Games(
     id: '03',
-    title: 'Subway Surfers',
-    description: 'Description goes here',
-    developer: 'SYBO Games',
+    title: 'Team Fortress 2',
+    description:
+        "Team Fortress 2 (TF2) is a 2007 multiplayer first-person shooter game developed and published by Valve Corporation. It is the sequel to the 1996 Team Fortress mod for Quake and its 1999 remake, Team Fortress Classic. The game was released in October 2007 as part of The Orange Box for Microsoft Windows and the Xbox 360, and ported to the PlayStation 3 in December 2007.[2][3] It was released as a standalone game for Windows in April 2008, and updated to support macOS in June 2010 and Linux in February 2013. It is distributed online through Valve's digital retailer Steam, with Electronic Arts managing retail and console editions.",
+    developer: 'Valve',
     year: 2012,
     urlimage:
-        'https://play-lh.googleusercontent.com/alCSQLIJVL4VB9OtGATP7f503VojDSgl_V78Zzz8AvGxfs1xaEmIFoVWrKtjigjPMecH',
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/header.jpg?t=1718220020',
   ),
-  PhoneGames(
+  Games(
     id: '04',
-    title: 'Candy Crush',
-    description: 'Description goes here',
-    developer: 'King',
+    title: 'Hollow Knight',
+    description:
+        "Hollow Knight is a 2017 Metroidvania video game developed and published by independent developer Team Cherry. The player controls the Knight, an insectoid warrior exploring Hallownest, a fallen kingdom plagued by a supernatural disease. The game is set in diverse subterranean locations, featuring friendly and hostile insectoid characters and numerous bosses. Players have the opportunity to unlock abilities as they explore, along with pieces of lore and flavour text that are spread throughout the kingdom.",
+    developer: 'Team Cherry',
+    year: 2017,
+    urlimage:
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/header.jpg?t=1695270428',
+  ),
+  Games(
+    id: '05',
+    title: 'Grand Theft Auto V',
+    description:
+        "Grand Theft Auto V is a 2013 action-adventure game developed by Rockstar North and published by Rockstar Games. It is the seventh main entry in the Grand Theft Auto series, following 2008's Grand Theft Auto IV, and the fifteenth instalment overall. Set within the fictional state of San Andreas, based on Southern California, the single-player story follows three protagonists—retired bank robber Michael De Santa (Ned Luke), street gangster Franklin Clinton (Shawn Fonteno), and drug dealer and gunrunner Trevor Philips (Steven Ogg), and their attempts to commit heists while under pressure from a corrupt government agency and powerful criminals. Players freely roam San Andreas's open world countryside and fictional city of Los Santos, based on Los Angeles.",
+    developer: 'Rockstar Games',
+    year: 2013,
+    urlimage:
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1720472998',
+  ),
+  Games(
+    id: '06',
+    title: 'ELDEN RING',
+    description:
+        'Elden Ring is a 2022 action role-playing game developed by FromSoftware. It was directed by Hidetaka Miyazaki with worldbuilding provided by American fantasy writer George R. R. Martin. It was published for PlayStation 4, PlayStation 5, Windows, Xbox One, and Xbox Series X/S on February 25 in Japan by FromSoftware and internationally by Bandai Namco Entertainment. Set in the Lands Between, players control a customizable player character on a quest to repair the Elden Ring and become the new Elden Lord.',
+    developer: 'FROM SOFTWARE',
+    year: 2022,
+    urlimage:
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/header_alt_assets_2.jpg?t=1720627962',
+  ),
+  Games(
+    id: '08',
+    title: 'Cyberpunk 2077',
+    description:
+        'Cyberpunk 2077 is a 2020 action role-playing video game developed by CD Projekt Red, and published by CD Projekt, and based on Mike Pondsmith'
+        's Cyberpunk tabletop game series. The plot is set in the fictional metropolis of Night City, California, within the dystopian Cyberpunk universe. The player assumes the role of V (voiced by Gavin Drea/Cherami Leigh), a mercenary who accidentally gets imbued with a cybernetic "bio-chip" containing an engram of legendary rockstar and terrorist Johnny Silverhand (voiced by Keanu Reeves). As Johnny’s behaviour and memories begin overwriting V’s own, the two must work together to separate from each other and save V'
+        's life.',
+    developer: 'CD PROJECT RED',
+    year: 2020,
+    urlimage:
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg?t=1718101184',
+  ),
+  Games(
+    id: '09',
+    title: 'Red Dead Redemption II',
+    description:
+        "Red Dead Redemption 2 is a 2018 action-adventure game developed and published by Rockstar Games. The game is the third entry in the Red Dead series and a prequel to the 2010 game Red Dead Redemption. The story is set in a fictionalized representation of the United States in 1899 and follows the exploits of Arthur Morgan, an outlaw and member of the Van der Linde gang, who must deal with the decline of the Wild West while attempting to survive against government forces, rival gangs, and other adversaries. The game is presented through first- and third-person perspectives, and the player may freely roam in its interactive open world. Gameplay elements include shootouts, robberies, hunting, horseback riding, interacting with non-player characters, and maintaining the character's honor rating through moral choices and deeds. A bounty system governs the response of law enforcement and bounty hunters to crimes committed by the player.",
+    developer: 'Rockstar Games',
     year: 2012,
     urlimage:
-        'https://play-lh.googleusercontent.com/6ducfNys46MGge6Bl3kaHaGbNnnQh46j6-3JkOqk0PKgUNVhm-dlNenJwz65nYZ4B0g8',
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1720558643',
+  ),
+  Games(
+    id: '10',
+    title: "Baldur's Gate III",
+    description:
+        "Baldur's Gate 3 is a 2023 role-playing video game developed and published by Larian Studios. It is the third main installment to the Baldur's Gate series, based on the tabletop fantasy role-playing system of Dungeons & Dragons. A partial version of the game was released in early access format for macOS and Windows in October 2020. It remained in early access until its full release for Windows in August 2023, with versions for PlayStation 5, macOS, and Xbox Series X/S releasing later that year. Set in the universe of the Forgotten Realms, the game begins with the protagonist waking up from unconsciousness on a mind flayer dimension-crossing ship infected with a parasitic tadpole that threatens to transform them into a mind flayer. Alongside several others who have met the same fate, they are forced to go on a quest to find a remedy to prevent ceremorphosis. Players choose from twelve character classes and customize their characters at the beginning of the game; they also select an origin from several options. Through interacting with other characters, engaging in round-based combat against enemies, and making plot decisions, players determine not only their fate but also the fate of Faerûn. That determination is also impacted by the game's dice roll mechanic where a player's roll determines if the outcome of a character action is a success or failure.",
+    developer: 'Larian Studios',
+    year: 2023,
+    urlimage:
+        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg?t=1713271288',
   ),
 ];

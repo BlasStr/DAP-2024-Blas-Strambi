@@ -7,7 +7,66 @@ class DetailScreen extends StatelessWidget {
 
   DetailScreen({super.key, this.gameDetail});
 
-  PhoneGames? gameDetail;
+  Games? gameDetail;
+
+  Widget titleAlign(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        text: gameDetail!.title,
+        style: const TextStyle(
+          color: Color.fromARGB(255, 60, 60, 60),
+          fontFamily: 'OpenSans',
+          fontSize: 30.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget developerAlign(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        text: gameDetail!.developer,
+        style: const TextStyle(
+          color: Color.fromARGB(255, 60, 60, 60),
+          fontFamily: 'OpenSans',
+          fontSize: 30.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget yearAlign(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        text: gameDetail!.year.toString(),
+        style: const TextStyle(
+          color: Color.fromARGB(255, 60, 60, 60),
+          fontFamily: 'OpenSans',
+          fontSize: 30.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget descAlign(BuildContext context) {
+    return RichText(
+      textAlign: TextAlign.left,
+      text: TextSpan(
+        text: gameDetail!.description,
+        style: const TextStyle(
+          color: Color.fromARGB(255, 60, 60, 60),
+          fontFamily: 'OpenSans',
+          fontSize: 20.0,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,48 +89,17 @@ class DetailScreen extends StatelessWidget {
           child: Center(
             child: Padding(
               padding: const EdgeInsets.all(40.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: ListView(
                 children: [
-                  Image.network(gameDetail!.urlimage, height: 400),
+                  FittedBox(
+                      child: Image.network(gameDetail!.urlimage, height: 1)),
                   const SizedBox(height: 16),
-                  Text(
-                    gameDetail!.title,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 60, 60, 60),
-                      fontFamily: 'OpenSans',
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    gameDetail!.developer,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 60, 60, 60),
-                      fontFamily: 'OpenSans',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                  titleAlign(context),
+                  developerAlign(context),
+                  const SizedBox(height: 10.0),
+                  yearAlign(context),
                   const SizedBox(height: 30.0),
-                  Text(
-                    gameDetail!.year.toString(),
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 60, 60, 60),
-                      fontFamily: 'OpenSans',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(height: 30.0),
-                  Text(
-                    gameDetail!.description,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 60, 60, 60),
-                      fontFamily: 'OpenSans',
-                      fontSize: 15.0,
-                    ),
-                  ),
+                  descAlign(context),
                 ],
               ),
             ),

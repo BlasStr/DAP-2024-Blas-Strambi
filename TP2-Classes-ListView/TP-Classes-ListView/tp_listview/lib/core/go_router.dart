@@ -18,7 +18,6 @@ final appRouter = GoRouter(routes: [
   GoRoute(
     name: DetailScreen.name,
     path: '/detail',
-    builder: (context, state) =>
-        DetailScreen(gameDetail: state.extra as PhoneGames),
+    builder: (context, state) => DetailScreen(gameDetail: state.extra as Games),
   ),
 ]);
