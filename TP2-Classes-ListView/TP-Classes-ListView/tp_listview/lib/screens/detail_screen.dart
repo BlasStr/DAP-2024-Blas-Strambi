@@ -56,7 +56,7 @@ class DetailScreen extends StatelessWidget {
 
   Widget descAlign(BuildContext context) {
     return RichText(
-      textAlign: TextAlign.left,
+      textAlign: TextAlign.justify,
       text: TextSpan(
         text: gameDetail!.description,
         style: const TextStyle(
