@@ -52,7 +52,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _getPoster(String urlimage) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(4.0),
       child: Image.network(urlimage),
     );
   }

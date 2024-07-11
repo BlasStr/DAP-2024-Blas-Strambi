@@ -35,7 +35,7 @@ final gamesList = [
     developer: 'FROM SOFTWARE',
     year: 2016,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/header.jpg?t=1700587390',
+        'https://store-images.s-microsoft.com/image/apps.61214.71827372323164480.6e97c7d2-899a-404f-8660-d622a7fc9162.740b1351-e659-486b-9d1c-948e0d928ead?q=90&w=480&h=270',
   ),
   Games(
     id: '03',
@@ -45,7 +45,7 @@ final gamesList = [
     developer: 'Valve',
     year: 2012,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440/header.jpg?t=1718220020',
+        'https://i.kinja-img.com/image/upload/c_fit,q_60,w_645/5548baed347b6eceffa7c2be066ee9db.jpg',
   ),
   Games(
     id: '04',
@@ -55,7 +55,7 @@ final gamesList = [
     developer: 'Team Cherry',
     year: 2017,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/header.jpg?t=1695270428',
+        'https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000003208/4643fb058642335c523910f3a7910575f56372f612f7c0c9a497aaae978d3e51',
   ),
   Games(
     id: '05',
@@ -65,7 +65,7 @@ final gamesList = [
     developer: 'Rockstar Games',
     year: 2013,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1720472998',
+        'https://articles-img.sftcdn.net/t_articles/auto-mapping-folder/sites/2/2022/03/gta-v-thumb-1024x576.jpg',
   ),
   Games(
     id: '06',
@@ -75,7 +75,7 @@ final gamesList = [
     developer: 'FROM SOFTWARE',
     year: 2022,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/header_alt_assets_2.jpg?t=1720627962',
+        'https://store-images.s-microsoft.com/image/apps.30323.14537704372270848.6ecb6038-5426-409a-8660-158d1eb64fb0.08703491-f5dc-4b00-bca6-486b7b293c17?q=90&w=480&h=270',
   ),
   Games(
     id: '08',
@@ -87,7 +87,7 @@ final gamesList = [
     developer: 'CD PROJECT RED',
     year: 2020,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/header.jpg?t=1718101184',
+        'https://store-images.s-microsoft.com/image/apps.34838.63407868131364914.bcaa868c-407e-42c2-baeb-48a3c9f29b54.1463028d-79fa-46e5-9fc2-63203992a4dc?q=90&w=480&h=270',
   ),
   Games(
     id: '09',
@@ -97,7 +97,7 @@ final gamesList = [
     developer: 'Rockstar Games',
     year: 2012,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1720558643',
+        'https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2018/08/21/07f65e8a-aff3-4567-b99d-1745b06baec1/red-dead-redemption-2',
   ),
   Games(
     id: '10',
@@ -107,6 +107,6 @@ final gamesList = [
     developer: 'Larian Studios',
     year: 2023,
     urlimage:
-        'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/header.jpg?t=1713271288',
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjyhcMfKFmMhJpW-nICYXSnMDuwlTNTx43Rg&s",
   ),
 ];
