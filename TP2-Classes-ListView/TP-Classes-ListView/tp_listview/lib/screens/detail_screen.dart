@@ -28,11 +28,11 @@ class DetailScreen extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.left,
       text: TextSpan(
-        text: gameDetail!.developer,
+        text: 'Developer: ${gameDetail?.developer}',
         style: const TextStyle(
           color: Color.fromARGB(255, 60, 60, 60),
           fontFamily: 'OpenSans',
-          fontSize: 30.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -43,11 +43,11 @@ class DetailScreen extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.left,
       text: TextSpan(
-        text: gameDetail!.year.toString(),
+        text: 'Year of release: ${gameDetail?.year.toString()}',
         style: const TextStyle(
           color: Color.fromARGB(255, 60, 60, 60),
           fontFamily: 'OpenSans',
-          fontSize: 30.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.bold,
         ),
       ),
@@ -95,8 +95,8 @@ class DetailScreen extends StatelessWidget {
                       child: Image.network(gameDetail!.urlimage, height: 1)),
                   const SizedBox(height: 16),
                   titleAlign(context),
+                  const SizedBox(height: 12.0),
                   developerAlign(context),
-                  const SizedBox(height: 10.0),
                   yearAlign(context),
                   const SizedBox(height: 30.0),
                   descAlign(context),
