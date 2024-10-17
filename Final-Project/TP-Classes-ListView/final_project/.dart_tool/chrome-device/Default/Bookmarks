@@ -1,0 +1,50 @@
+{
+   "checksum": "b9d8af2d66c937fd5c4645d0679563a7",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13249255626034298",
+            "date_last_used": "0",
+            "guid": "deb530c2-f6c1-4de3-a26c-9984eb26e882",
+            "id": "7",
+            "name": "Sergio Aguirre - Los vecinos mueren en las novelas.pdf",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "file:///D:/ORT/Lengua%20y%20Literatura/Sergio%20Aguirre%20-%20Los%20vecinos%20mueren%20en%20las%20novelas.pdf"
+         } ],
+         "date_added": "13361492867395608",
+         "date_last_used": "0",
+         "date_modified": "13249255626034298",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Favourites bar",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13361492867395612",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other favourites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13361492867395613",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile favourites",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CkEKHgiIgQISCC9uTsaPAQAAKg4QABgBIAAoBjAAOABAABIAKhhuTnRJeTZSNHpDRWI3V05zV2lsZ1BnPT1IA6AGDBKnAQgHEqIBChxZSkE0amFCVS92Y1psNjMrbUJNb0U2RXJkZWs9EiRkZWI1MzBjMi1mNmMxLTRkZTMtYTI2Yy05OTg0ZWIyNmU4ODIYACAAKAAw0e7IwLcxOIv1yMC3MUCL9cjAtzFKHEo1OXFtcThuTEhsdDYyK3FQTk12YUpSR21hbz1aHiIcVmZ3QUFreFFQNS9ldG0zRENqMXVvR3ZBdXhjPWV3cGyjEokBCAEShAEKHHl4Si82ZnZrZWNyN2twNUVRekI0dFdMcGRiRT0SJGUyNTg5ZGYxLTFhM2YtNTI3MC1hZGViLTRmNGM5YTc0ZDliYxgAIAAoADCA+PT3/i447vCD7Y8wQO7wg+2PMEocYVJDV0xnaEY5YjVJbnFLSUR2dUovanZRa0ZjPVoAZQAAAAASiQEIAhKEAQocWWNTVG9udkVTUHdxQ3M0TDJjclZodjY4TDk4PRIkZDE0ZWMzNDQtNGM4Yy01YjVlLWFhYmMtMzc3MGM5YzkxODFkGAAgACgAMIH49Pf+Ljj+8IPtjzBA/vCD7Y8wShxvUFZraHdCUmJWNjVLQ1dSMitJT05IV29PdTg9WgBlAAAAABKJAQgDEoQBChxuamdEdTg4ZUNydlhwODZwRDdmSEdjcUZwODg9EiQwOGFiYTM2Ni1kM2IyLTU5ZWMtODc5YS0yYmE1NGJmMjQ3ODIYACAAKAAwhfj09/4uONvxg+2PMEDb8YPtjzBKHHl6TkIwMWNuNTRBN2NSVTB1VCsvUGdtVHRVbz1aAGUAAAAAMAA4AA==",
+   "version": 1
+}
