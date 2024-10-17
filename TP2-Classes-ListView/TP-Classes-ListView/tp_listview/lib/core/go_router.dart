@@ -7,17 +7,21 @@ import 'package:tp_listview/screens/login_screen.dart';
 final appRouter = GoRouter(routes: [
   GoRoute(
     name: LoginScreen.name,
-    path: '/',
+    path: '/a',
     builder: (context, state) => LoginScreen(),
   ),
   GoRoute(
     name: HomeScreen.name,
-    path: '/home',
+    path: '/',
     builder: (context, state) => const HomeScreen(),
   ),
   GoRoute(
     name: DetailScreen.name,
     path: '/detail',
-    builder: (context, state) => DetailScreen(gameDetail: state.extra as Games),
+    builder: (context, state) => DetailScreen(
+      gameDetail: state.extra as Games,
+      onDelete: (games) {},
+      onUpdate: (games) {},
+    ),
   ),
 ]);
