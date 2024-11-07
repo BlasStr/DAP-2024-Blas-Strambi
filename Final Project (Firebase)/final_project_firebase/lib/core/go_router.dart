@@ -1,15 +1,15 @@
+import 'package:final_project_firebase/screens/login_register_screen.dart';
 import 'package:go_router/go_router.dart';
-
 import '../screens/add_screen.dart';
 import '../screens/detail_screen.dart';
 import '../screens/home_screen.dart';
-import '../screens/login_screen.dart';
 
 final appRouter = GoRouter(routes: [
   GoRoute(
-    name: LoginScreen.name,
-    path: '/',
-    builder: (context, state) => LoginScreen(),
+    name: LoginRegisterScreen
+        .name, // Define the route name for LoginRegisterScreen
+    path: '/', // Path for the LoginRegisterScreen route
+    builder: (context, state) => const LoginRegisterScreen(),
   ),
   GoRoute(
     name: HomeScreen.name,

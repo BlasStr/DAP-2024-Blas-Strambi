@@ -14,6 +14,7 @@ import 'package:flutter/foundation.dart'
 ///   options: DefaultFirebaseOptions.currentPlatform,
 /// );
 /// ```
+
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
@@ -41,13 +42,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDQnliSl0yS3qDxQu3uSY1lvikimzWInN8',
-    appId: '1:725729088217:web:55c1196791fd08dcade4c8',
-    messagingSenderId: '725729088217',
-    projectId: 'dap-2024-final-project',
-    authDomain: 'dap-2024-final-project.firebaseapp.com',
-    storageBucket: 'dap-2024-final-project.firebasestorage.app',
-  );
+      apiKey: "AIzaSyDQnliSl0yS3qDxQu3uSY1lvikimzWInN8",
+      authDomain: "dap-2024-final-project.firebaseapp.com",
+      projectId: "dap-2024-final-project",
+      storageBucket: "dap-2024-final-project.firebasestorage.app",
+      messagingSenderId: "725729088217",
+      appId: "1:725729088217:web:55c1196791fd08dcade4c8");
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDgmQ5dEn_fSAml0BPO4aRvXPjtBAdbzO8',
@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB744S5Wf47XalxEzAMYJrSUze86EzB-78',
+    apiKey: 'AIzaSyDgmQ5dEn_fSAml0BPO4aRvXPjtBAdbzO8',
     appId: '1:725729088217:ios:15c8b581acca0a99ade4c8',
     messagingSenderId: '725729088217',
     projectId: 'dap-2024-final-project',
@@ -67,7 +67,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB744S5Wf47XalxEzAMYJrSUze86EzB-78',
+    apiKey: 'AIzaSyDgmQ5dEn_fSAml0BPO4aRvXPjtBAdbzO8',
     appId: '1:725729088217:ios:15c8b581acca0a99ade4c8',
     messagingSenderId: '725729088217',
     projectId: 'dap-2024-final-project',
@@ -76,11 +76,10 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDQnliSl0yS3qDxQu3uSY1lvikimzWInN8',
-    appId: '1:725729088217:web:e55c8db32c6b7ddaade4c8',
-    messagingSenderId: '725729088217',
-    projectId: 'dap-2024-final-project',
-    authDomain: 'dap-2024-final-project.firebaseapp.com',
-    storageBucket: 'dap-2024-final-project.firebasestorage.app',
-  );
+      apiKey: "AIzaSyDQnliSl0yS3qDxQu3uSY1lvikimzWInN8",
+      authDomain: "dap-2024-final-project.firebaseapp.com",
+      projectId: "dap-2024-final-project",
+      storageBucket: "dap-2024-final-project.firebasestorage.app",
+      messagingSenderId: "725729088217",
+      appId: "1:725729088217:web:e55c8db32c6b7ddaade4c8");
 }
