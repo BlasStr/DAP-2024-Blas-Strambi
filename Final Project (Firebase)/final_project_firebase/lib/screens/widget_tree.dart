@@ -10,6 +10,7 @@ class WidgetTree extends StatefulWidget {
   State<WidgetTree> createState() => _WidgetTreeState();
 }
 
+//If user is logged in, it redirects them to the Home Page, instead of the Login Screen
 class _WidgetTreeState extends State<WidgetTree> {
   @override
   Widget build(BuildContext context) {

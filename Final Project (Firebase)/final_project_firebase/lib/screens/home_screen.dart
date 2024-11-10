@@ -1,20 +1,21 @@
-// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: avoid_print
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:final_project_firebase/domain/games.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../core/data/games_datasource.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String name = 'home_screen';
   const HomeScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-// Callback to the Functions in detail screen
 class DetailScreenExtras {
+  // Define my functions when passing to the detail screen
   final Games game;
   final Function(Games) onDelete;
   final Function(Games) onUpdate;
@@ -22,14 +23,43 @@ class DetailScreenExtras {
   DetailScreenExtras(this.game, this.onDelete, this.onUpdate);
 }
 
-// Add Function
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Games> newGamesList = List.from(gamesList);
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  List<Games> newGamesList = [];
 
-  void _addGame(String id, String title, String developer, String description,
-      String imageUrl, String year) {
+  @override
+  void initState() {
+    super.initState();
+    fetchGames();
+  }
+
+  Future<void> fetchGames() async {
+    try {
+      // Retrieve all documents from the games
+      final querySnapshot = await _firestore.collection('games').get();
+
+      // Map each document to a Games instance using fromFirestore
+      final games = querySnapshot.docs.map((doc) {
+        // Use doc to access a specific document from a collection in Firestore
+        return Games.fromFirestore(doc, null);
+      }).toList();
+
+      setState(() {
+        newGamesList = games;
+      });
+    } catch (e) {
+      print("Error fetching games: $e");
+    }
+  }
+
+  Future<void> _addGame(String id, String title, String developer,
+      String description, String imageUrl, String year) async {
+    final newGameID = FirebaseFirestore.instance
+        .collection('games')
+        .doc(); // Create a new unique ID for the new game
     final newGame = Games(
-      id: (gamesList.length + 1).toString(),
+      // Add a game with all the parameters previously defined
+      id: newGameID.id,
       title: title,
       developer: developer,
       description: description,
@@ -37,35 +67,70 @@ class _HomeScreenState extends State<HomeScreen> {
       year: int.tryParse(year) ?? 0,
     );
 
-    setState(() {
-      newGamesList.add(newGame);
-    });
+    try {
+      // Wait for firestore and add a game
+      await _firestore
+          .collection('games')
+          .doc(newGame.id)
+          .set(newGame.toFirestore());
+      setState(() {
+        // Refreshes the UI
+        newGamesList.add(newGame);
+      });
+    } catch (e) {
+      // Error handling
+      print("Error adding game: $e");
+    }
   }
 
-// Update Function
-  void _updateGame(Games updatedGame) {
-    setState(() {
-      int index = newGamesList.indexWhere((game) => game.id == updatedGame.id);
-      if (index != -1) {
-        newGamesList[index] = updatedGame;
-      }
-    });
+  Future<void> _updateGame(Games updatedGame) async {
+    // Replaces old documents in the collection with new ones
+    try {
+      await _firestore
+          .collection('games')
+          .doc(updatedGame.id)
+          .update(updatedGame.toFirestore()); // Uploads the game to Firestore
+      setState(() {
+        // Refreshes the UI
+        int index = newGamesList.indexWhere((game) =>
+            game.id ==
+            updatedGame
+                .id); // Searches for the list item whose id matches the one of the updated game
+        if (index != -1) {
+          // Makes sure a matching game is found, if not the index would return -1
+          newGamesList[index] = updatedGame;
+        }
+      });
+    } catch (e) {
+      // Error handling
+      print("Error updating game: $e");
+    }
   }
 
-// Delete Function
-  void _deleteGame(Games game) {
-    setState(() {
-      newGamesList.remove(game);
-    });
+  Future<void> _deleteGame(Games game) async {
+    try {
+      await _firestore
+          .collection('games')
+          .doc(game.id)
+          .delete(); // Function that deletes the item
+      setState(() {
+        // Refreshes the UI
+        newGamesList.remove(game);
+      });
+    } catch (e) {
+      // Error handling
+      print("Error deleting game: $e");
+    }
+  }
 
-    const gameErased = SnackBar(
-      duration: Duration(seconds: 1),
-      content: Text('Element erased'),
+  Widget _getPoster(String urlimage) {
+    // Gets the URL and returns it as an image
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(4.0),
+      child: Image.network(urlimage),
     );
-    ScaffoldMessenger.of(context).showSnackBar(gameErased);
   }
 
-// Button that goes to the add aplication screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,58 +138,52 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Home'),
         actions: [
           IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () {
-                context.push('/add', extra: _addGame);
-              }),
+            icon: const Icon(Icons.add),
+            onPressed: () {
+              context.push('/add', extra: _addGame);
+            },
+          ),
         ],
       ),
       body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        padding: const EdgeInsets.all(20),
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.bottomCenter,
             end: Alignment.topCenter,
             colors: [
-              Color.fromRGBO(50, 50, 50, 0.5),
-              Color.fromRGBO(100, 100, 100, 0.5),
-              Color.fromRGBO(150, 150, 150, 0.5),
-              Color.fromRGBO(200, 200, 200, 0.5),
+              Color.fromRGBO(50, 40, 50, 0.5),
+              Color.fromRGBO(100, 90, 100, 0.5),
+              Color.fromRGBO(150, 140, 150, 0.5),
+              Color.fromRGBO(200, 190, 200, 0.5),
             ],
           ),
         ),
-        child: ListView.builder(
-          itemCount: newGamesList.length,
-          itemBuilder: (context, index) {
-            Games gameElement = newGamesList[index];
-            return Padding(
-                padding: const EdgeInsets.only(),
-                child: Card(
-                  color: const Color.fromRGBO(240, 235, 240, 1),
-                  child: ListTile(
-                    // ignore: unnecessary_null_comparison
-                    leading: gameElement.urlimage != null
-                        ? _getPoster(gameElement.urlimage)
-                        : const Icon(Icons.gamepad),
-                    title: Text(gameElement.title),
-                    subtitle: Text('Developer: ${gameElement.developer}'),
-                    trailing: const Icon(Icons.arrow_circle_right_sharp),
-                    onTap: () => context.push(
-                      '/detail',
-                      extra: DetailScreenExtras(
-                          gameElement, _deleteGame, _updateGame),
+        child: newGamesList.isEmpty
+            ? const Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                itemCount: newGamesList.length,
+                itemBuilder: (context, index) {
+                  Games gameElement = newGamesList[index];
+                  return Card(
+                    color: const Color.fromRGBO(240, 235, 240, 1),
+                    child: ListTile(
+                      leading: _getPoster(gameElement.urlimage),
+                      title: Text(gameElement.title),
+                      subtitle: Text('Developer: ${gameElement.developer}'),
+                      trailing: const Icon(Icons.arrow_circle_right_sharp),
+                      onTap: () => context.push(
+                        '/detail',
+                        extra: DetailScreenExtras(
+                            gameElement, _deleteGame, _updateGame),
+                      ),
                     ),
-                  ),
-                ));
-          },
-        ),
+                  );
+                },
+              ),
       ),
-    );
-  }
-
-  Widget _getPoster(String urlimage) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(4.0),
-      child: Image.network(urlimage),
     );
   }
 }

@@ -6,9 +6,8 @@ import '../screens/home_screen.dart';
 
 final appRouter = GoRouter(routes: [
   GoRoute(
-    name: LoginRegisterScreen
-        .name, // Define the route name for LoginRegisterScreen
-    path: '/', // Path for the LoginRegisterScreen route
+    name: LoginRegisterScreen.name,
+    path: '/',
     builder: (context, state) => const LoginRegisterScreen(),
   ),
   GoRoute(
@@ -32,7 +31,7 @@ final appRouter = GoRouter(routes: [
     name: AddGameScreen.name,
     path: '/add',
     builder: (context, state) {
-      final onAddGame = state.extra as Function(
+      final onAddGame = state.extra as Future<void> Function(
           String, String, String, String, String, String);
       return AddGameScreen(
         onAddGame: onAddGame,

@@ -1,18 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../core/data/games_datasource.dart';
 
 class AddGameScreen extends StatelessWidget {
   static const String name = 'add_screen';
 
+  // Define controllers
   final TextEditingController titleController = TextEditingController();
   final TextEditingController developerController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController imageUrlController = TextEditingController();
   final TextEditingController yearController = TextEditingController();
 
-  final Function(String, String, String, String, String, String) onAddGame;
+  final Future<void> Function(String, String, String, String, String, String)
+      onAddGame;
 
   AddGameScreen({super.key, required this.onAddGame});
 
@@ -37,6 +38,7 @@ class AddGameScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
+                // Text Fields
                 TextField(
                   controller: titleController,
                   decoration: const InputDecoration(labelText: 'Game Title'),
@@ -75,19 +77,32 @@ class AddGameScreen extends StatelessWidget {
                       return;
                     }
 
-                    // Prepare game data for the new element
-                    final id = (gamesList.length + 1).toString();
-                    final title = titleController.text;
-                    final developer = developerController.text;
-                    final description = descriptionController.text;
-                    final imageUrl = imageUrlController.text;
-                    final year =
-                        yearController.text.isEmpty ? '0' : yearController.text;
+                    Map<String, String> newGameData = {
+                      // Map the data of the new game
+                      "ID": FirebaseFirestore.instance
+                          .collection('games')
+                          .doc()
+                          .id,
+                      "Title": titleController.text,
+                      "Developer": developerController.text,
+                      "Description": descriptionController.text,
+                      "Image": imageUrlController.text,
+                      "Year": yearController.text.isEmpty
+                          ? '0'
+                          : yearController.text,
+                    };
 
+                    // Use the mapped data to create the new game
                     onAddGame(
-                        id, title, developer, description, imageUrl, year);
+                      newGameData["ID"]!,
+                      newGameData["Title"]!,
+                      newGameData["Developer"]!,
+                      newGameData["Description"]!,
+                      newGameData["Image"]!,
+                      newGameData["Year"]!,
+                    );
 
-                    context.pop(); // Goes back to previous screen
+                    context.pop(); // Go back to Home Screen
                     const gameAdded = SnackBar(
                       duration: Duration(seconds: 1),
                       content: Text('Element added'),

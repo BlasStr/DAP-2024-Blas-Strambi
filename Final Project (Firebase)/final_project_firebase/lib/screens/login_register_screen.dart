@@ -1,3 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
@@ -12,7 +15,7 @@ class LoginRegisterScreen extends StatefulWidget {
   State<LoginRegisterScreen> createState() => _LoginRegisterScreenState();
 }
 
-// Error messages, Firebase things
+// Error messages, Firebase thingies
 class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   String? errorMessage = "";
   bool isLogin = true;
@@ -20,25 +23,20 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-  }
-
   Future<void> signInWithEmailAndPassword() async {
+    setState(() {
+      errorMessage = ""; // Reset the error message at the beginning
+    });
     try {
       await Auth().signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
-      // Navigate to the next screen if sign-in is successful
-      // ignore: use_build_context_synchronously
       context.go('/home');
       const successfulLogIn = SnackBar(
         duration: Duration(seconds: 1),
         content: Text('Welcome'),
       );
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(successfulLogIn);
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -49,19 +47,19 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
 
   // Create user function
   Future<void> createUserWithEmailAndPassword() async {
+    setState(() {
+      errorMessage = ""; // Reset the error message at the beginning
+    });
     try {
       await Auth().createUserWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text,
       );
-      // Navigate to the next screen if registration is successful
-      // ignore: use_build_context_synchronously
       context.go('/home');
       const successfulLogIn = SnackBar(
         duration: Duration(seconds: 1),
         content: Text('Welcome'),
       );
-      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(successfulLogIn);
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -78,12 +76,15 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   Widget _entryField(
     String title,
     TextEditingController controller,
-    Icon icon,
-  ) {
+    Icon icon, {
+    bool obscureText = false,
+  }) {
     return TextField(
       controller: controller,
+      obscureText: obscureText,
       decoration: InputDecoration(
         labelText: title,
+        prefixIcon: icon,
       ),
     );
   }
@@ -114,8 +115,18 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   Widget _registerButton() {
     return TextButton(
         onPressed: isLogin
-            ? signInWithEmailAndPassword
-            : createUserWithEmailAndPassword,
+            ? () {
+                setState(() {
+                  isLogin = false; // Switch to register mode
+                });
+                Map<String, String> userData = {
+                  //Add the new User Data to the collection
+                  "Email": emailController.text,
+                  "Password": passwordController.text,
+                };
+                FirebaseFirestore.instance.collection("user").add(userData);
+              }
+            : createUserWithEmailAndPassword, // Handle registration
         child: const Text("Register"));
   }
 
@@ -136,7 +147,8 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
                       "Enter Email", emailController, const Icon(Icons.person)),
                   const SizedBox(height: 30.0),
                   _entryField("Enter Password", passwordController,
-                      const Icon(Icons.lock)),
+                      const Icon(Icons.lock),
+                      obscureText: true),
                   const SizedBox(height: 10.0),
                 ],
               ),
@@ -181,7 +193,6 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Title
               const Text(
                 'Sign In',
                 style: TextStyle(
@@ -191,21 +202,17 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-
               _entryField(
                   "Enter Email", emailController, const Icon(Icons.person)),
               const SizedBox(height: 30.0),
-
               _entryField(
-                  "Enter Password", passwordController, const Icon(Icons.lock)),
+                  "Enter Password", passwordController, const Icon(Icons.lock),
+                  obscureText: true),
               const SizedBox(height: 10.0),
-
               _errorMessage(),
               const SizedBox(height: 30.0),
-
               _submitButton(),
               const SizedBox(height: 10.0),
-
               _logInOrRegisterButton(),
             ],
           ),
