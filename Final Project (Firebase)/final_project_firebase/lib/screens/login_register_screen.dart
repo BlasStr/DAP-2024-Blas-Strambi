@@ -18,7 +18,6 @@ class LoginRegisterScreen extends StatefulWidget {
 // Error messages, Firebase thingies
 class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   String? errorMessage = "";
-  bool isLogin = true;
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -55,12 +54,18 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
         email: emailController.text,
         password: passwordController.text,
       );
-      context.go('/home');
-      const successfulLogIn = SnackBar(
+      Map<String, String> userData = {
+        //Add the new User Data to the collection
+        "Email": emailController.text,
+        "Password": passwordController.text,
+      };
+      FirebaseFirestore.instance.collection("user").add(userData);
+      context.pop();
+      const successfulRegister = SnackBar(
         duration: Duration(seconds: 1),
-        content: Text('Welcome'),
+        content: Text('Registration successful'),
       );
-      ScaffoldMessenger.of(context).showSnackBar(successfulLogIn);
+      ScaffoldMessenger.of(context).showSnackBar(successfulRegister);
     } on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -105,43 +110,33 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
   // Sign In button
   Widget _submitButton() {
     return ElevatedButton(
-        onPressed: isLogin
-            ? signInWithEmailAndPassword
-            : createUserWithEmailAndPassword,
-        child: const Text("Sign In with Email and Password"));
+      onPressed: signInWithEmailAndPassword,
+      child: const Text("Login"),
+    );
   }
 
-  // Register button
+  //Register Button
   Widget _registerButton() {
     return TextButton(
-        onPressed: isLogin
-            ? () {
-                setState(() {
-                  isLogin = false; // Switch to register mode
-                });
-                Map<String, String> userData = {
-                  //Add the new User Data to the collection
-                  "Email": emailController.text,
-                  "Password": passwordController.text,
-                };
-                FirebaseFirestore.instance.collection("user").add(userData);
-              }
-            : createUserWithEmailAndPassword, // Handle registration
-        child: const Text("Register"));
+      onPressed: createUserWithEmailAndPassword,
+      child: const Text("Register"),
+    );
   }
 
   // Register window
-  Widget _logInOrRegisterButton() {
-    return TextButton(
-      onPressed: () {
-        // Show dialog
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text('Register'),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
+Widget _registerWindow() {
+  return TextButton(
+    onPressed: () {
+      // Show dialog
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Register'),
+            content: SizedBox(
+              width: 800, 
+              child: Column(
+                mainAxisSize: MainAxisSize.min, // Keep the height dynamic
                 children: [
                   _entryField(
                       "Enter Email", emailController, const Icon(Icons.person)),
@@ -150,22 +145,25 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
                       const Icon(Icons.lock),
                       obscureText: true),
                   const SizedBox(height: 10.0),
+                  _errorMessage(),
+                  const SizedBox(height: 10.0),
                 ],
               ),
-              actions: [
-                _registerButton(),
-                TextButton(
-                  onPressed: () => Navigator.pop(context),
-                  child: const Text('Cancel'),
-                ),
-              ],
-            );
-          },
-        );
-      },
-      child: const Text("Register Instead"),
-    );
-  }
+            ),
+            actions: [
+              _registerButton(),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+            ],
+          );
+        },
+      );
+    },
+    child: const Text("Register Instead"),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
@@ -213,7 +211,7 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
               const SizedBox(height: 30.0),
               _submitButton(),
               const SizedBox(height: 10.0),
-              _logInOrRegisterButton(),
+              _registerWindow(),
             ],
           ),
         ),
