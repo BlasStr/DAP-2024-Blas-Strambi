@@ -134,9 +134,9 @@ Widget _registerWindow() {
           return AlertDialog(
             title: const Text('Register'),
             content: SizedBox(
-              width: 800, 
+              width: 820, 
               child: Column(
-                mainAxisSize: MainAxisSize.min, // Keep the height dynamic
+                mainAxisSize: MainAxisSize.min, 
                 children: [
                   _entryField(
                       "Enter Email", emailController, const Icon(Icons.person)),
