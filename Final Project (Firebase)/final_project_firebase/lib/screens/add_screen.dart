@@ -16,6 +16,21 @@ class AddGameScreen extends StatelessWidget {
       onAddGame;
 
   AddGameScreen({super.key, required this.onAddGame});
+  Widget _entryField(
+    String title,
+    TextEditingController controller,
+    Icon icon, {
+    bool obscureText = false,
+  }) {
+    return TextField(
+      controller: controller,
+      obscureText: obscureText,
+      decoration: InputDecoration(
+        labelText: title,
+        prefixIcon: icon,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,31 +52,31 @@ class AddGameScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Text(
+                  'Add Element',
+                  style: TextStyle(
+                    color: Color.fromARGB(255, 60, 60, 60),
+                    fontFamily: 'OpenSans',
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 // Text Fields
-                TextField(
-                  controller: titleController,
-                  decoration: const InputDecoration(labelText: 'Game Title'),
-                ),
-                TextField(
-                  controller: developerController,
-                  decoration: const InputDecoration(labelText: 'Developer'),
-                ),
-                TextField(
-                  controller: descriptionController,
-                  decoration:
-                      const InputDecoration(labelText: 'Game Description'),
-                ),
-                TextField(
-                  controller: imageUrlController,
-                  decoration: const InputDecoration(labelText: 'Image URL'),
-                ),
-                TextField(
-                  controller: yearController,
-                  decoration: const InputDecoration(
-                      labelText:
-                          'Year of Release (Will default to 0 if not an integer)'),
-                  keyboardType: TextInputType.number,
+                _entryField(
+                    'Game Title', titleController, const Icon(Icons.title)),
+                _entryField('Developer', developerController,
+                    const Icon(Icons.developer_board)),
+                _entryField('Description', descriptionController,
+                    const Icon(Icons.description)),
+                _entryField(
+                    'Image URL', imageUrlController, const Icon(Icons.image)),
+                _entryField(
+                  'Year of Release',
+                  yearController,
+                  const Icon(Icons.calendar_month),
                 ),
                 const SizedBox(height: 20),
                 ElevatedButton(
