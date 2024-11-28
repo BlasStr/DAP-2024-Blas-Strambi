@@ -20,6 +20,7 @@ class DetailScreen extends StatelessWidget {
   final Function(Games) onDelete;
   final Function(Games) onUpdate;
 
+  // Edit game Function
   Future<void> _editGame(BuildContext context) async {
     final TextEditingController titleController =
         TextEditingController(text: gameDetail.title);
@@ -76,7 +77,7 @@ class DetailScreen extends StatelessWidget {
                       .get();
 
                   if (!docSnapshot.exists) {
-                    // Document doesn't exist, show a message
+                    // If the document doesn't exist, show a message
                     const errorSnackBar = SnackBar(
                       content: Text('Game document not found.'),
                       duration: Duration(seconds: 1),
@@ -142,7 +143,6 @@ class DetailScreen extends StatelessWidget {
     );
   }
 
-// Game information
   @override
   Widget build(BuildContext context) {
     return Scaffold(

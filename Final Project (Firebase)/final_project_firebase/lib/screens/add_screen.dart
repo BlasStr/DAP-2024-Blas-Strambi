@@ -15,6 +15,7 @@ class AddGameScreen extends StatelessWidget {
   final Future<void> Function(String, String, String, String, String, String)
       onAddGame;
 
+  // Inputs
   AddGameScreen({super.key, required this.onAddGame});
   Widget _entryField(
     String title,

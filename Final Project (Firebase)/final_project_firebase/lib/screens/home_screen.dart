@@ -30,10 +30,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    fetchGames();
+    getGames();
   }
 
-  Future<void> fetchGames() async {
+  Future<void> getGames() async {
     try {
       // Retrieve all documents from the games
       final querySnapshot = await _firestore.collection('games').get();
@@ -52,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  // Add games Function
   Future<void> _addGame(String id, String title, String developer,
       String description, String imageUrl, String year) async {
     final newGameID = FirebaseFirestore.instance
@@ -83,6 +84,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  // Update games Function
   Future<void> _updateGame(Games updatedGame) async {
     // Replaces old documents in the collection with new ones
     try {
@@ -107,6 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  // Delete games Function
   Future<void> _deleteGame(Games game) async {
     try {
       await _firestore
@@ -123,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  // Get URL for the images
   Widget _getPoster(String urlimage) {
     // Gets the URL and returns it as an image
     return ClipRRect(
